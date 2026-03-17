@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectors</title>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <style>
+        body{
+            color:brown;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2 id="heading" >Selectors Page</h2>
+
+<p class="para" >Paragraph 1</p>
+<p >Paragraph 2</p>
+
+<h2>hierarchy selectors</h2>
+<div id="box">
+    <span>Span 1</span>
+    <p>Paragraph 1</p>
+    
+    <div>
+        <p>Paragraph 2</p>
+         <span>Span 1</span>
+    </div>
+    <span>div next sibling</span>
+    <p>change my size</p>
+    
+</div>
+<h2> filter selectors</h2>
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li class="special">Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+</ul>
+<h2> atttribute selectors</h2>
+
+<input type="text" placeholder="Name">
+<input type="password" placeholder="Password">
+<input type="text" value="Hello">
+<input type="email" placeholder="Email">
+<br>
+<button id="btn" onclick="basicsele()">Try with basic Selector</button>
+<br>
+<button id="btn" onclick="hierarchysele()">Try with heirarchy Selector</button>
+<br>
+<button id="btn" onclick="filtersele()">Try with filter  Selector</button>
+<br>
+<button id="btn" onclick="attributesele()">Try with attribute  Selector</button>
+
+<script>
+ function basicsele(){
+     $("p").css("color","blue")
+     $("#heading").css("color","black")
+     $(".para").css("color","yellow")
+     $("button").css("color","green")}
+function hierarchysele(){
+     $("div p").css("background-color","lightblue")
+     $("div > p").css("font-family","Comic Sans MS")
+     $("div + span").css("font-size","100px")
+     $("div ~ p").css("background-color","pink")}
+function filtersele(){
+     $("li:first").css("color","blue")
+     $("li:last").css("color","black")
+     $("li:eq(2)").css("color","yellow")
+     $("p:even").css("color","magenta")
+     $("p:odd").css("color","purple")
+     $("li:not(:first)").css("color","green")
+    }
+function attributesele(){
+    $("[type]").css("border", "2px solid red");
+     $("[type=text]").css("background", "yellow")
+     $("[placeholder^=N]").css("color", "blue");
+    $("[placeholder$=word]").css("background", "pink");
+    $("[value*=ell]").css("font-weight", "bold");
+}
+</script>
+</body>
+</html>
