@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Animation</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #img {
+            width: 200px;
+            position: relative;
+            margin: 20px;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>jQuery Effects on Image</h2>
+
+<img id="img" src="moon.jpg">
+
+<br>
+
+<!-- Basic -->
+<button id="hideBtn">Hide</button>
+<button id="showBtn">Show</button>
+<button id="toggleBtn">Toggle</button>
+
+<br>
+
+<!-- Fade -->
+<button id="fadeInBtn">Fade In</button>
+<button id="fadeOutBtn">Fade Out</button>
+<button id="fadeToggleBtn">Fade Toggle</button>
+<button id="fadeToBtn">Fade To 0.3</button>
+
+<br>
+
+<!-- Slide -->
+<button id="slideDownBtn">Slide Down</button>
+<button id="slideUpBtn">Slide Up</button>
+<button id="slideToggleBtn">Slide Toggle</button>
+
+<br>
+
+<!-- Animate -->
+<button id="animateBtn">Animate</button>
+
+<br>
+
+<!-- Control -->
+<button id="stopBtn">Stop</button>
+<button id="finishBtn">Finish</button>
+<button id="delayBtn">Delay</button>
+<button id="queueBtn">Queue</button>
+<button id="dequeueBtn">Dequeue</button>
+<button id="clearQueueBtn">Clear Queue</button>
+
+<script>
+$(document).ready(function(){
+
+    // -------- Basic --------
+    $("#hideBtn").click(function(){
+        $("#img").hide();
+    });
+
+    $("#showBtn").click(function(){
+        $("#img").show();
+    });
+
+    $("#toggleBtn").click(function(){
+        $("#img").toggle();
+    });
+
+    // -------- Fade --------
+    $("#fadeInBtn").click(function(){
+        $("#img").fadeIn();
+    });
+
+    $("#fadeOutBtn").click(function(){
+        $("#img").fadeOut();
+    });
+
+    $("#fadeToggleBtn").click(function(){
+        $("#img").fadeToggle();
+    });
+
+    $("#fadeToBtn").click(function(){
+        $("#img").fadeTo(1000, 0.3);
+    });
+
+    // -------- Slide --------
+    $("#slideDownBtn").click(function(){
+        $("#img").slideDown();
+    });
+
+    $("#slideUpBtn").click(function(){
+        $("#img").slideUp();
+    });
+
+    $("#slideToggleBtn").click(function(){
+        $("#img").slideToggle();
+    });
+
+    // -------- Animate --------
+   $("#animateBtn").click(function(){
+    $("#img").animate({
+        left: "+=200px",
+        opacity: 0.5,
+        width: "250px"
+    }, 1000);
+});
+    // -------- Control --------
+    $("#stopBtn").click(function(){
+        $("#img").stop();
+    });
+
+    $("#finishBtn").click(function(){
+        $("#img").finish();
+    });
+
+    $("#delayBtn").click(function(){
+        $("#img").delay(1000).animate({ left: "0px" });
+    });
+
+    $("#queueBtn").click(function(){
+        $("#img").queue(function(next){
+            alert("Step 1");
+            next();
+        }).queue(function(next){
+            alert("Step 2");
+            next();
+        });
+    });
+
+    $("#dequeueBtn").click(function(){
+        $("#img").dequeue();
+    });
+
+    $("#clearQueueBtn").click(function(){
+        $("#img").clearQueue();
+    });
+
+});
+</script>
+
+</body>
+</html>

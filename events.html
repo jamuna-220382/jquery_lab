@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events Demo</title>
+
+    <!-- Correct jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+<h2>jQuery Events Practice</h2>
+
+<!-- Mouse Events -->
+<button id="btn">Click me</button>
+<button id="dbtn">Double click me</button>
+<button id="menter">Mouse Events Button</button>
+
+<!-- Keyboard Events -->
+<input type="text" id="keyevent" placeholder="Type something">
+
+<!-- Form Events -->
+<form id="myForm">
+    <input type="text" id="name" placeholder="Enter name">
+    <button type="submit">Submit</button>
+</form>
+
+<p id="output"></p>
+
+<script>
+
+// ================= Mouse Events =================
+$("#btn").click(function(){
+   $("#output").text("Button Clicked");
+});
+
+$("#dbtn").dblclick(function(){
+   $("#output").text("Double Clicked");
+});
+
+$("#menter").mouseenter(function(){
+   $("#output").text("Mouse Entered");
+});
+
+$("#menter").mouseleave(function(){
+   $("#output").text("Mouse Left");
+});
+
+$("#menter").hover(
+   function(){ console.log("Hover Enter"); },
+   function(){ console.log("Hover Leave"); }
+);
+
+$("#menter").mousedown(function(){
+   console.log("Mouse Down");
+});
+
+$("#menter").mouseup(function(){
+   console.log("Mouse Up");
+});
+
+// ================= Keyboard Events =================
+$("#keyevent").keypress(function(){
+   console.log("Key Pressed");
+});
+
+$("#keyevent").keydown(function(){
+   console.log("Key Down");
+});
+
+$("#keyevent").keyup(function(){
+   console.log("Key Up");
+});
+
+// ================= Form Events =================
+$("#name").focus(function(){
+   $(this).css("background","lightyellow");
+});
+
+$("#name").blur(function(){
+   $(this).css("background","white");
+});
+
+$("#name").change(function(){
+   alert("Value changed to: " + $(this).val());
+});
+
+$("#myForm").submit(function(e){
+   e.preventDefault();
+   alert("Form Submitted");
+});
+
+// ================= on() and off() =================
+$("#btn").on("mouseover", function(){
+   console.log("Mouse over using ON");
+});
+
+// remove event after 5 seconds
+setTimeout(function(){
+   $("#btn").off("mouseover");
+   console.log("Event removed using OFF");
+}, 5000);
+
+</script>
+
+</body>
+</html>

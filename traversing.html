@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traversing Full</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        li {
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid black;
+        }
+
+        .parentColor { background-color: lightblue; }
+        .childrenColor { background-color: lightgreen; }
+        .siblingColor { background-color: orange; }
+        .nextColor { background-color: pink; }
+        .prevColor { background-color: violet; }
+        .filterColor { background-color: yellow; }
+    </style>
+</head>
+
+<body>
+
+<h2>jQuery Traversing (Colorful Demo)</h2>
+
+<div id="container">
+    <ul id="list">
+        <li class="item">Item 1</li>
+        <li class="item special">Item 2</li>
+        <li class="item">Item 3</li>
+        <li class="item">Item 4</li>
+    </ul>
+</div>
+
+<!-- Buttons -->
+<h3>Parent</h3>
+<button id="parentBtn">parent()</button>
+<button id="parentsBtn">parents()</button>
+<button id="parentsUntilBtn">parentsUntil()</button>
+
+<h3>Children</h3>
+<button id="childrenBtn">children()</button>
+<button id="findBtn">find()</button>
+
+<h3>Siblings</h3>
+<button id="siblingsBtn">siblings()</button>
+<button id="nextBtn">next()</button>
+<button id="nextAllBtn">nextAll()</button>
+<button id="nextUntilBtn">nextUntil()</button>
+<button id="prevBtn">prev()</button>
+<button id="prevAllBtn">prevAll()</button>
+<button id="prevUntilBtn">prevUntil()</button>
+
+<h3>Filtering</h3>
+<button id="firstBtn">first()</button>
+<button id="lastBtn">last()</button>
+<button id="eqBtn">eq(1)</button>
+<button id="filterBtn">filter()</button>
+<button id="notBtn">not()</button>
+
+<br><br>
+<button id="resetBtn">Reset Colors</button>
+
+<script>
+$(document).ready(function(){
+
+    function reset() {
+        $("li, ul, div").removeClass(
+            "parentColor childrenColor siblingColor nextColor prevColor filterColor"
+        );
+    }
+
+    // Parent
+    $("#parentBtn").click(function(){
+        reset();
+        $(".special").parent().addClass("parentColor");
+    });
+
+    $("#parentsBtn").click(function(){
+        reset();
+        $(".special").parents().addClass("parentColor");
+    });
+
+    $("#parentsUntilBtn").click(function(){
+        reset();
+        $(".special").parentsUntil("body").addClass("parentColor");
+    });
+
+    // Children
+    $("#childrenBtn").click(function(){
+        reset();
+        $("#list").children().addClass("childrenColor");
+    });
+
+    $("#findBtn").click(function(){
+        reset();
+        $("#container").find("li").addClass("childrenColor");
+    });
+
+    // Siblings
+    $("#siblingsBtn").click(function(){
+        reset();
+        $(".special").siblings().addClass("siblingColor");
+    });
+
+    $("#nextBtn").click(function(){
+        reset();
+        $(".special").next().addClass("nextColor");
+    });
+
+    $("#nextAllBtn").click(function(){
+        reset();
+        $(".special").nextAll().addClass("nextColor");
+    });
+
+    $("#nextUntilBtn").click(function(){
+        reset();
+        $(".special").nextUntil(":last").addClass("nextColor");
+    });
+
+    $("#prevBtn").click(function(){
+        reset();
+        $(".special").prev().addClass("prevColor");
+    });
+
+    $("#prevAllBtn").click(function(){
+        reset();
+        $(".special").prevAll().addClass("prevColor");
+    });
+
+    $("#prevUntilBtn").click(function(){
+        reset();
+        $(".special").prevUntil(":first").addClass("prevColor");
+    });
+
+    // Filtering
+    $("#firstBtn").click(function(){
+        reset();
+        $(".item").first().addClass("filterColor");
+    });
+
+    $("#lastBtn").click(function(){
+        reset();
+        $(".item").last().addClass("filterColor");
+    });
+
+    $("#eqBtn").click(function(){
+        reset();
+        $(".item").eq(1).addClass("filterColor");
+    });
+
+    $("#filterBtn").click(function(){
+        reset();
+        $(".item").filter(".special").addClass("filterColor");
+    });
+
+    $("#notBtn").click(function(){
+        reset();
+        $(".item").not(".special").addClass("filterColor");
+    });
+
+    // Reset button
+    $("#resetBtn").click(function(){
+        reset();
+    });
+
+});
+</script>
+
+</body>
+</html>
